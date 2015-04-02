@@ -58,7 +58,7 @@
 					<td><a href="/seara/allviews/loginAssistido1"><b>Dados
 								Assistido</b></a></td>  -->
 					<td><a
-						title="Efetuar agendamento de tratamentos e emitir senha de espera" href="/seara/allviews/confirmarNomeAssistido?urlCorreto=novoAtendimento1&origemRequest=Agendamento"><b>Recepção</b></a></td>
+						title="___Efetuar agendamento de tratamentos e emitir senha de espera" href="/seara/allviews/confirmarNomeAssistido?urlCorreto=novoAtendimento1&origemRequest=Agendamento"><b>Recepção</b></a></td>
 					
 					<!-- 
 					<td><a title="Realizar triagem (apenas os trabalhadores da triagem têm acesso)"

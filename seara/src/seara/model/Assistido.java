@@ -30,7 +30,7 @@ public class Assistido implements Serializable {
 	
 	private boolean ehTrabalhador;
 
-	// --- endereço ---
+	// --- endere√ßo ---
 	private String numero;
 	private String complemento;
 	private String logradouro;

@@ -1,5 +1,5 @@
 package seara.util.constantes;
 
 public enum GravidadeDoProblema {
-	Altíssima, Alta, Média, Baixa;
+	Alt√≠ssima, Alta, M√©dia, Baixa;
 }

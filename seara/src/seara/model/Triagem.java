@@ -28,7 +28,7 @@ public class Triagem implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 
-	// informações sobre os problemas
+	// informa√ß√µes sobre os problemas
 	private boolean ehEspiritual;
 	private boolean ehFisico;
 	private boolean ehFamiliar;
@@ -162,9 +162,9 @@ public class Triagem implements Serializable {
 	public String getShowFeedBack() {
 		StringBuffer str = new StringBuffer("<select name=\"triagem.status\">");
 
-		str.append("<option value=" + FeedBack.Não_Se_Aplica_Não_é_Retorno
-				+ (FeedBack.Não_Se_Aplica_Não_é_Retorno.equals(this.status) ? " selected" : "") + ">"
-				+  "Não Se Aplica (Não é Retorno)</option>");
+		str.append("<option value=" + FeedBack.N√£o_Se_Aplica_N√£o_√©_Retorno
+				+ (FeedBack.N√£o_Se_Aplica_N√£o_√©_Retorno.equals(this.status) ? " selected" : "") + ">"
+				+  "N√£o Se Aplica (N√£o √© Retorno)</option>");
 
 		str.append("<option value=" + FeedBack.Continua_Igual
 				+ (FeedBack.Continua_Igual.equals(this.status) ? " selected" : "") + ">"
@@ -189,17 +189,17 @@ public class Triagem implements Serializable {
 				+ (GravidadeDoProblema.Baixa.equals(this.gravidade) ? " selected" : "") + ">" + GravidadeDoProblema.Baixa
 				+ "</option>");
 
-		str.append("<option value=" + GravidadeDoProblema.Média
-				+ (GravidadeDoProblema.Média.equals(this.gravidade) ? " selected" : "") + ">" + GravidadeDoProblema.Média
+		str.append("<option value=" + GravidadeDoProblema.M√©dia
+				+ (GravidadeDoProblema.M√©dia.equals(this.gravidade) ? " selected" : "") + ">" + GravidadeDoProblema.M√©dia
 				+ "</option>");
 
 		str.append("<option value=" + GravidadeDoProblema.Alta
 				+ (GravidadeDoProblema.Alta.equals(this.gravidade) ? " selected" : "") + ">" + GravidadeDoProblema.Alta
 				+ "</option>");
 
-		str.append("<option value=" + GravidadeDoProblema.Altíssima
-				+ (GravidadeDoProblema.Altíssima.equals(this.gravidade) ? " selected" : "") + ">"
-				+ GravidadeDoProblema.Altíssima + "</option>");
+		str.append("<option value=" + GravidadeDoProblema.Alt√≠ssima
+				+ (GravidadeDoProblema.Alt√≠ssima.equals(this.gravidade) ? " selected" : "") + ">"
+				+ GravidadeDoProblema.Alt√≠ssima + "</option>");
 
 		str.append("</select>");
 		return str.toString();

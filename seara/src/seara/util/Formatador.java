@@ -12,8 +12,8 @@ public class Formatador implements Serializable {
 	
 	public static int TIRA_ESSA_GAMBI_PELAMOR = 0;
 
-	public static final DiaDaSemana[] diaDaSemana = { null, DiaDaSemana.Domingo, DiaDaSemana.Segunda, DiaDaSemana.Terça,
-			DiaDaSemana.Quarta, DiaDaSemana.Quinta, DiaDaSemana.Sexta, DiaDaSemana.Sábado };
+	public static final DiaDaSemana[] diaDaSemana = { null, DiaDaSemana.Domingo, DiaDaSemana.Segunda, DiaDaSemana.Ter√ßa,
+			DiaDaSemana.Quarta, DiaDaSemana.Quinta, DiaDaSemana.Sexta, DiaDaSemana.S√°bado };
 
 	public static DiaDaSemana getDiaDaSemana(Calendar data) {
 		return diaDaSemana[data.get(Calendar.DAY_OF_WEEK)];

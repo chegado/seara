@@ -125,7 +125,7 @@ public class AgendamentoDAO implements Serializable {
 		if (ehPrioritaria) {
 			a.getListaAcoes().addLast(
 					"<a href=\"/seara/allviews/imprimeSenha?idAgendamento=" + a.getId() + "&ehPrioritario=true"
-							+ "\">EMITIR SENHA PRIORITÁRIA</a>");
+							+ "\">EMITIR SENHA PRIORIT√ÅRIA</a>");
 		} else {
 			a.getListaAcoes().addLast(
 					"<a href=\"/seara/allviews/imprimeSenha?idAgendamento=" + a.getId() + "&ehPrioritario=false"
@@ -226,14 +226,14 @@ public class AgendamentoDAO implements Serializable {
 	public List<Agendamento> listaPendentes(Long idAssistido) {
 		Criterion c1 = Restrictions.eq("idAssistido", idAssistido);
 		Criterion c2 = Restrictions.eq("status", StatusDoAgendamento.Assistido_Faltou);
-		Criterion c3 = Restrictions.eq("status", StatusDoAgendamento.Data_Não_Marcada);
+		Criterion c3 = Restrictions.eq("status", StatusDoAgendamento.Data_N√£o_Marcada);
 		Criterion c4 = Restrictions.or(c2, c3);
 
 		@SuppressWarnings("unchecked")
 		List<Agendamento> pendentes = session.createCriteria(Agendamento.class).add(c1).add(c4).list();
 
 		for (Agendamento a : pendentes) {
-			if (a.getStatus().equals(StatusDoAgendamento.Data_Não_Marcada)) {
+			if (a.getStatus().equals(StatusDoAgendamento.Data_N√£o_Marcada)) {
 				addAcaoMarcarData(a);
 			} else if (a.getStatus().equals(StatusDoAgendamento.Assistido_Faltou)) {
 				addAcaoRemarcarData(a);

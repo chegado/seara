@@ -105,7 +105,7 @@ public class AllviewsController implements Serializable {
 		EventoPainelSenha evento = gerenciadorDeSenhas.consomeProximoEvento();
 
 		if (evento == null) {
-			result.include("nomeTratamento", "Seara Esperança");
+			result.include("nomeTratamento", "Seara Esperan√ßa");
 			result.include("senha", "Oi!");
 			result.include("ehUmNumeroSoh", true);
 		} else {
@@ -126,7 +126,7 @@ public class AllviewsController implements Serializable {
 
 	// -------------------------
 
-	// --- FUNÇÕES AUXILIARES ---
+	// --- FUN√á√ïES AUXILIARES ---
 	public void imprimir() {
 		result.forwardTo(this).logoutAssistido1("listaAgendamentos");
 	}
@@ -158,7 +158,7 @@ public class AllviewsController implements Serializable {
 			Assistido assistido = assistidoDAO.buscaPorRg(rg);
 
 			if (assistido == null) {
-				validator.add(new ValidationMessage("O RG " + rg + " não está cadastrado.", ""));
+				validator.add(new ValidationMessage("O RG " + rg + " n√£o est√° cadastrado.", ""));
 				return false;
 			} else {
 				assistidoSession.setAssistido(assistido);
@@ -169,13 +169,13 @@ public class AllviewsController implements Serializable {
 
 			if (assistidos.size() == 0) {
 				validator.add(new ValidationMessage(
-						"O assistido não foi encontrado na base de dados. <br> Verifique se houve erro de digitação.", ""));
+						"O assistido n√£o foi encontrado na base de dados. <br> Verifique se houve erro de digita√ß√£o.", ""));
 				return false;
 			} else if (assistidos.size() == 1) {
 				assistidoSession.setAssistido(assistidos.get(0));
 				return true;
 			} else {
-				validator.add(new ValidationMessage("Há mais do que 1 assistido cadastrado com o nome de <b>"
+				validator.add(new ValidationMessage("H√° mais do que 1 assistido cadastrado com o nome de <b>"
 						+ assistidos.get(0).getNomeCompleto() + "</b>.", ""));
 				return false;
 			}
@@ -199,7 +199,7 @@ public class AllviewsController implements Serializable {
 		Usuario carregado = usuarioDAO.busca(usuario);
 
 		if (carregado == null) {
-			validator.add(new ValidationMessage("Usuário Não Cadastrado ou Senha Inválida", ""));
+			validator.add(new ValidationMessage("Usu√°rio N√£o Cadastrado ou Senha Inv√°lida", ""));
 			validator.onErrorUsePageOf(this).loginOperador();
 			return;
 		}
@@ -208,9 +208,9 @@ public class AllviewsController implements Serializable {
 
 		result.redirectTo(this)
 				.mostraMensagem(
-						"Olá, "
+						"Ol√°, "
 								+ carregado.getNome()
-								+ "!<br />Obrigado por fazer parte da família<br /> <b>Lar Seara Esperaça Irmã Matilde!</b> <br />Bom Trabalho!",
+								+ "!<br />Obrigado por fazer parte da fam√≠lia<br /> <b>Lar Seara Espera√ßa Irm√£ Matilde!</b> <br />Bom Trabalho!",
 						"vazia");
 	}
 
@@ -270,7 +270,7 @@ public class AllviewsController implements Serializable {
 
 	// ----------------------
 
-	// --- RELATÓRIO ---
+	// --- RELAT√ìRIO ---
 	@RestritoRecepcao
 	public void listaTodosAgendamentos1() {
 	}
@@ -368,7 +368,7 @@ public class AllviewsController implements Serializable {
 			} else {
 				validator
 						.add(new ValidationMessage(
-								"Identificador já existe. <br> Favor verificar os campos <b>RG</b>, <b>Nome Completo</b> e <b>Data de Nascimento</b>",
+								"Identificador j√° existe. <br> Favor verificar os campos <b>RG</b>, <b>Nome Completo</b> e <b>Data de Nascimento</b>",
 								""));
 				validator.onErrorUsePageOf(this).novoAssistido1(assistido, diaNiver, mesNiver, anoNiver);
 			}
@@ -387,7 +387,7 @@ public class AllviewsController implements Serializable {
 
 	private void pesquisaRG(Assistido assistido, String diaNiver, String mesNiver, String anoNiver) {
 		if (assistido.getRg() == null || assistido.getRg().trim().equals("")) {
-			validator.add(new ValidationMessage("O RG " + assistido.getRg() + " não está cadastrado.", ""));
+			validator.add(new ValidationMessage("O RG " + assistido.getRg() + " n√£o est√° cadastrado.", ""));
 			assistido.setId(null);
 			validator.onErrorUsePageOf(this).novoAssistido1(assistido, diaNiver, mesNiver, anoNiver);
 		}
@@ -395,7 +395,7 @@ public class AllviewsController implements Serializable {
 		Assistido a = assistidoDAO.buscaPorRg(assistido.getRg());
 
 		if (a == null) {
-			validator.add(new ValidationMessage("O RG " + assistido.getRg() + " não está cadastrado.", ""));
+			validator.add(new ValidationMessage("O RG " + assistido.getRg() + " n√£o est√° cadastrado.", ""));
 			assistido.setId(null);
 			validator.onErrorUsePageOf(this).novoAssistido1(a, diaNiver, mesNiver, anoNiver);
 		} else {
@@ -465,7 +465,7 @@ public class AllviewsController implements Serializable {
 		agendamento.setIdAssistido(assistidoSession.getAssistido().getId());
 		agendamento.setDataAgendamento(Formatador.getDataHoje());
 		agendamento.setDataAtendimento(null);
-		agendamento.setStatus(StatusDoAgendamento.Data_Não_Marcada);
+		agendamento.setStatus(StatusDoAgendamento.Data_N√£o_Marcada);
 		Triagem triagem = triagemDAO.buscaMaisRecente(agendamento.getIdAssistido());
 
 		if (triagem != null) {
@@ -484,10 +484,10 @@ public class AllviewsController implements Serializable {
 			triagem.setIdAssistido(assistidoSession.getAssistido().getId());
 			triagemDAO.atualiza(triagem);
 
-			// preenche em 'triagem' os tratamentos já agendados
+			// preenche em 'triagem' os tratamentos j√° agendados
 			triagemDAO.preencheTratamentos(triagem);
 
-			// agenda novos tratamentos, se houve alteração
+			// agenda novos tratamentos, se houve altera√ß√£o
 			if (tratamentosAgendados != null) {
 				for (Long idTratamento : tratamentosAgendados) {
 					if (!triagem.idTratamentosAgendamentos.contains(idTratamento)) {
@@ -502,7 +502,7 @@ public class AllviewsController implements Serializable {
 
 	// ---------------
 
-	// --- ATENDIMENTO RECEPÇÃO ---
+	// --- ATENDIMENTO RECEP√á√ÉO ---
 	@RestritoRecepcao
 	public void novoAtendimento1() {
 		if (assistidoSession.getAssistido() != null) {
@@ -541,7 +541,7 @@ public class AllviewsController implements Serializable {
 			agendamento.setDiaDaSemana(Formatador.getDiaDaSemana(agendamento.getDataAtendimento()));
 		} else {
 			agendamento.setDataAtendimento(null);
-			agendamento.setStatus(StatusDoAgendamento.Data_Não_Marcada);
+			agendamento.setStatus(StatusDoAgendamento.Data_N√£o_Marcada);
 		}
 
 		Tratamento tratamento = tratamentoDAO.busca(agendamento.getIdTratamento());
@@ -583,7 +583,7 @@ public class AllviewsController implements Serializable {
 		Agendamento agendamento = agendamentoDAO.busca(idAgendamento);
 
 		if (ehPrioritario && !agendamento.getStatus().equals(StatusDoAgendamento.Senha_Emitida)) {
-			agendamento.setSenha("PRIORITÁRIA");
+			agendamento.setSenha("PRIORIT√ÅRIA");
 			agendamento.setStatus(StatusDoAgendamento.Senha_Emitida);
 			agendamentoDAO.atualiza(agendamento);
 		} else if (!ehPrioritario && !agendamento.getStatus().equals(StatusDoAgendamento.Senha_Emitida)) {
@@ -626,7 +626,7 @@ public class AllviewsController implements Serializable {
 
 	// ---------------
 
-	// --- CADASTRO USUÁRIO ---
+	// --- CADASTRO USU√ÅRIO ---
 	@RestritoADM
 	public void listaUsuarios() {
 		result.include("usuarios", usuarioDAO.listaTodos());
@@ -636,7 +636,7 @@ public class AllviewsController implements Serializable {
 	public void novoUsuario1(String action, String login) {
 		if (action != null && action.contains("remover")) {
 			usuarioDAO.remove(login);
-			result.forwardTo(this).mostraMensagem("Usuário removido com sucesso.", "listaUsuarios");
+			result.forwardTo(this).mostraMensagem("Usu√°rio removido com sucesso.", "listaUsuarios");
 		}
 	}
 
@@ -646,14 +646,14 @@ public class AllviewsController implements Serializable {
 			result.redirectTo(this).listaUsuarios();
 		} else {
 			if (usuario.getNome().length() < 3 || usuario.getLogin().length() < 3 || usuario.getSenha().length() < 3) {
-				validator.add(new ValidationMessage("Cada campo deve ter no mínimo 3 caracteres.", ""));
+				validator.add(new ValidationMessage("Cada campo deve ter no m√≠nimo 3 caracteres.", ""));
 			} else if (usuarioDAO.existeUsuario(usuario)) {
-				validator.add(new ValidationMessage("Já existe um usuário '" + usuario.getLogin() + "' cadastrado.", ""));
+				validator.add(new ValidationMessage("J√° existe um usu√°rio '" + usuario.getLogin() + "' cadastrado.", ""));
 			} else if (!usuario.getSenha().equals(senhaAgain)) {
-				validator.add(new ValidationMessage("A senha não confere.", ""));
+				validator.add(new ValidationMessage("A senha n√£o confere.", ""));
 			} else {
 				usuarioDAO.adiciona(usuario);
-				result.redirectTo(this).mostraMensagem("Usuário cadastrado com sucesso.", "listaUsuarios");
+				result.redirectTo(this).mostraMensagem("Usu√°rio cadastrado com sucesso.", "listaUsuarios");
 			}
 		}
 		validator.onErrorUsePageOf(this).novoUsuario1(null, null);
@@ -678,7 +678,7 @@ public class AllviewsController implements Serializable {
 		} else {
 
 			if (diasDaSemana == null) {
-				validator.add(new ValidationMessage("Escolha os dias da semana em que <br /> o tratamento será realizado.",
+				validator.add(new ValidationMessage("Escolha os dias da semana em que <br /> o tratamento ser√° realizado.",
 						""));
 				validator.onErrorUsePageOf(this).novoTratamento1();
 
@@ -714,7 +714,7 @@ public class AllviewsController implements Serializable {
 			result.redirectTo(this).listaTratamentos();
 		} else {
 			if (diasDaSemana == null) {
-				validator.add(new ValidationMessage("Escolha os dias da semana em que <br /> o tratamento será realizado.",
+				validator.add(new ValidationMessage("Escolha os dias da semana em que <br /> o tratamento ser√° realizado.",
 						""));
 				validator.onErrorUsePageOf(this).editaTratamento1(tratamento.getId());
 

@@ -30,41 +30,41 @@ public class AutorizacaoInterceptor implements Interceptor, Serializable {
 	}
 
 	enum Motivo {
-		NãoEstáLogado, PrecisaSerADM, PrecisaSerTriagem, PrecisaSerRecepção;
+		N√£oEst√°Logado, PrecisaSerADM, PrecisaSerTriagem, PrecisaSerRecep√ß√£o;
 	}
 
 	Motivo motivo = null;
 
 	public boolean accepts(ResourceMethod method) {
 		if (!usuario.isLogado() && ehRestrito(method)) {
-			motivo = Motivo.NãoEstáLogado;
+			motivo = Motivo.N√£oEst√°Logado;
 			return true;
 		}
 
-		// ADM, só quem tem acesso é ADM
+		// ADM, s√≥ quem tem acesso √© ADM
 		if (method.containsAnnotation(RestritoADM.class) && !usuario.getTipoUsuario().equals(TipoDoUsuario.Administrador)) {
 			motivo = Motivo.PrecisaSerADM;
 			return true;
 		}
 
-		// Triagem, só quem tem acesso é ADM e Triagem
+		// Triagem, s√≥ quem tem acesso √© ADM e Triagem
 		if (method.containsAnnotation(RestritoTriagem.class) && !usuario.getTipoUsuario().equals(TipoDoUsuario.Triagem)
 				&& !usuario.getTipoUsuario().equals(TipoDoUsuario.Administrador)) {
 			motivo = Motivo.PrecisaSerTriagem;
 			return true;
 		}
 
-		// Recepção, só quem tem acesso é ADM, Triagem e Recepção
-		if (method.containsAnnotation(RestritoRecepcao.class) && !usuario.getTipoUsuario().equals(TipoDoUsuario.Recepção)
+		// Recep√ß√£o, s√≥ quem tem acesso √© ADM, Triagem e Recep√ß√£o
+		if (method.containsAnnotation(RestritoRecepcao.class) && !usuario.getTipoUsuario().equals(TipoDoUsuario.Recep√ß√£o)
 				&& !usuario.getTipoUsuario().equals(TipoDoUsuario.Triagem)
 				&& !usuario.getTipoUsuario().equals(TipoDoUsuario.Administrador)) {
-			motivo = Motivo.PrecisaSerRecepção;
+			motivo = Motivo.PrecisaSerRecep√ß√£o;
 			return true;
 		}
 
-		// Auxiliar Externo, todos têm acesso, basta estar logado
+		// Auxiliar Externo, todos t√™m acesso, basta estar logado
 		if (method.containsAnnotation(RestritoAuxiliarExterno.class)) {
-			// não faz nada...
+			// n√£o faz nada...
 		}
 
 		return false;
@@ -73,13 +73,13 @@ public class AutorizacaoInterceptor implements Interceptor, Serializable {
 	public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance)
 			throws InterceptionException {
 		switch (motivo) {
-		case NãoEstáLogado:
+		case N√£oEst√°Logado:
 			result.redirectTo(AllviewsController.class).mostraMensagem("Favor efetuar <i>login</i> no sistema.",
 					"loginOperador");
 			break;
 
 		default:
-			result.redirectTo(AllviewsController.class).mostraMensagem("Acesso não autorizado.",
+			result.redirectTo(AllviewsController.class).mostraMensagem("Acesso n√£o autorizado.",
 					"vazia");
 		}
 	}

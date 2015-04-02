@@ -1,0 +1,111 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="seara.util.constantes.*" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<link rel="shortcut icon" href="../images/pomba_da_paz.png">
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+
+<!-- -------- DATE PICKER ----------- -->
+<link href="../css/jquery-ui.css" rel="stylesheet">
+<link href="../css/jquery-ui.min.css" rel="stylesheet">
+<link href="../css/jquery-ui.structure.css" rel="stylesheet">
+<link href="../css/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="../css/jquery-ui.theme.css" rel="stylesheet">
+<link href="../css/jquery-ui.theme.min.css" rel="stylesheet">
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/configuraDatePicker.js"></script>
+<!--  ------------------------------- -->
+
+<!-- Paginação -->
+<script type="text/javascript" src="../js/paging.js"></script>
+
+<title>Lar Seara Esperança</title>
+</head>
+<body>
+	<div id="banner">
+		<h1>
+			<img src="../images/matilde.png"
+				style="width: 60px; height: 60px; padding: 25px 0px 0px 0px;">
+		</h1>
+		<h1>Lar Seara Esperança</h1>
+		<h2>Irmã Matilde</h2>
+		<h4>${usuarioSession.hoje}</h4>
+		<c:if test="${usuarioSession.logado}">
+			<h3>Operador: ${usuarioSession.nome} (${usuarioSession.tipoUsuario.formatado})</h3>
+		</c:if>
+		<c:if test="${!usuarioSession.logado}">
+			<h3>Operador: nenhum</h3>
+		</c:if>
+		
+		
+	</div>
+
+	<div id="menu">
+		<ul id="nav">
+			<table
+				style="border: 1px solid #3E9FE6; text-align: center; width: 100%; table-layout: fixed;">
+				<tr>
+				<!-- 
+					<td><a href="/seara/allviews/loginAssistido1"><b>Dados
+								Assistido</b></a></td>  -->
+					<td><a
+						title="Efetuar agendamento de tratamentos e emitir senha de espera" href="/seara/allviews/confirmarNomeAssistido?urlCorreto=novoAtendimento1&origemRequest=Agendamento"><b>Recepção</b></a></td>
+					
+					<!-- 
+					<td><a title="Realizar triagem (apenas os trabalhadores da triagem têm acesso)"
+						href="/seara/allviews/confirmarNomeAssistido?urlCorreto=novaTriagem1&origemRequest=Triagem"><b>Triagem</b></a></td>
+						 -->
+						 
+					<td><a title="Vizualizar e atualizar a fila de espera"
+						href="/seara/allviews/filaDeEspera"><b>Fila de Espera</b></a></td>
+						
+					<td><a title="Cadastrar novos operadores, listar e alterar os dados dos operadores já cadastrados (apenas os administradores do sistema têm acesso)" href="/seara/allviews/listaUsuarios"><b>Operadores</b></a></td>
+					<td><a title="Listar os assistidos cadastrados no sistema" href="/seara/allviews/listaAssistidos1"><b>Assistidos</b></a></td>
+					<td><a title="Cadastrar novos tratamentos, listar e alterar os dados dos tratamentos já cadastrados (apenas os administradores do sistema têm acesso)" href="/seara/allviews/listaTratamentos"><b>Tratamentos</b></a></td>
+					<td><a title="Ver quantos agendamentos foram feitos para cada tratamento na data informada" href="/seara/allviews/listaTodosAgendamentos1"><b>Relatório</b></a></td>
+					<td><a title="Sempre que o operador precisar deixar seu posto, favor pressionar este botão" href="/seara/allviews/sair"><b>Sair</b></a></td>
+				</tr>
+			</table>
+
+		</ul>
+	</div>
+	<!-- 
+	<div id="menu">
+		<ul id="nav">
+			<li><a href="/seara/allviews/loginAssistido1"><b>Dados
+						Assistido</b></a></li>
+			<li><a href="/seara/allviews/novoAtendimento1"><b>Agendamento</b></a></li>
+			<li><a href="/seara/allviews/novaTriagem1"><b>Triagem</b></a></li>
+			<li><a href="/seara/allviews/listaUsuarios"><b>Usuários</b></a></li>
+			<li><a href="/seara/allviews/listaTratamentos"><b>Tratamentos</b></a></li>
+			<li><a href="/seara/allviews/listaTodosAgendamentos1"><b>Relatório</b></a></li>
+			<li><a href="/seara/allviews/sair"><b>Sair</b></a></li>
+		</ul>
+	</div>
+ -->
+	<!-- 
+	<div id="menu">
+		<table 
+			style="background:../images/cream_pixels.png; background: #3E9FE6; color: #fff; text-align: center; width: 100%; table-layout: fixed;">
+			<tr>
+				<td><a href="/seara/allviews/loginAssistido1"><b>Dados
+							Assistido</b></a></td>
+				<td><a href="/seara/allviews/novoAtendimento1"><b>Agendamento</b></a></td>
+				<td><a href="/seara/allviews/novaTriagem1"><b>Triagem</b></a></td>
+				<td><a href="/seara/allviews/listaUsuarios"><b>Usuários</b></a></td>
+				<td><a href="/seara/allviews/listaTratamentos"><b>Tratamentos</b></a></td>
+				<td><a href="/seara/allviews/listaTodosAgendamentos1"><b>Relatório</b></a></td>
+				<td><a href="/seara/allviews/sair"><b>Sair</b></a></td>
+			</tr>
+		</table>
+	</div>
+	-->

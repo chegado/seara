@@ -1,0 +1,16 @@
+drop table Agendamento;
+drop table Assistido;
+drop table Tratamento;
+drop table Senha;
+drop table Tratamento;
+drop table Triagem;
+drop table Usuario;
+
+delete from Senha;
+delete from Agendamento;
+delete from EventoPainelSenha;
+delete from Triagem;
+
+
+insert into Usuario (nome,login,senha,tipoUsuario) values ("Alexandre Freire", "chegado", "opus666", "2");
+
